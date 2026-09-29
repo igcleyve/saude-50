@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Memória Ativa — Rotina em dia e mente em movimento</title>
+<meta name="description" content="Aplicativo acadêmico que reúne lembretes de remédios e consultas com exercícios diários de memória, atenção e raciocínio, pensado para pessoas com 50 anos ou mais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { sans: ['"Atkinson Hyperlegible"', 'Verdana', 'Arial', 'sans-serif'] },
+    colors: { ink: '#0F2A43', soft: '#2B4257', teal: { DEFAULT: '#005A5B', dark: '#003F40' }, mist: '#E6EFF5', sun: '#FFCB47' }
+  } }
+}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans leading-relaxed antialiased">
+<a href="#conteudo" class="absolute -top-24 left-2 z-50 bg-sun text-ink font-bold px-4 py-3 rounded focus:top-2">Pular para o conteúdo</a>
+
+<header class="border-b-2 border-ink">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
+    <a href="#topo" class="text-2xl font-bold text-ink">Memória Ativa</a>
+    <nav aria-label="Navegação principal" class="flex flex-wrap items-center gap-x-6 gap-y-2 font-bold">
+      <a class="underline underline-offset-4 py-2" href="#solucao">Por que usar</a>
+      <a class="underline underline-offset-4 py-2" href="#recursos">O que oferece</a>
+      <a class="underline underline-offset-4 py-2" href="#transparencia">Transparência</a>
+      <a class="underline underline-offset-4 py-2" href="#acessibilidade">Acessibilidade</a>
+      <span class="flex items-center gap-2" role="group" aria-label="Tamanho da letra">
+        <button id="menos" type="button" class="btn !min-h-[48px] !px-4 bg-mist text-ink border-2 border-ink" aria-label="Diminuir tamanho da letra">A −</button>
+        <button id="mais" type="button" class="btn !min-h-[48px] !px-4 bg-mist text-ink border-2 border-ink" aria-label="Aumentar tamanho da letra">A +</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+<!-- HERO -->
+<section id="topo" class="bg-mist">
+  <div class="max-w-6xl mx-auto px-5 py-14 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="font-bold text-teal text-lg">Projeto acadêmico de pesquisa e desenvolvimento</p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold leading-tight">Mente ativa e rotina em dia, em um só lugar.</h1>
+      <p class="mt-6 text-xl text-soft max-w-xl">O Memória Ativa reúne lembretes de remédios e compromissos com exercícios diários de memória, atenção e raciocínio. Você organiza o dia, exercita a mente e acompanha a própria regularidade, no seu ritmo.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#final" class="btn bg-teal text-white hover:bg-teal-dark">Conhecer o protótipo</a>
+        <a href="#recursos" class="btn bg-white text-ink border-2 border-ink hover:bg-sun">Ver como funciona</a>
+      </div>
+      <p class="mt-5 text-lg text-soft">Gratuito durante a fase de pesquisa. Sem necessidade de cartão.</p>
+    </div>
+
+    <!-- Mockup do celular (construído em HTML/CSS) -->
+    <div class="flex justify-center" role="img" aria-label="Ilustração da tela inicial do aplicativo em um celular, mostrando o remédio da manhã, uma consulta às 14h30 e o desafio do dia.">
+      <div class="w-[290px] rounded-[2.5rem] border-[10px] border-ink bg-white shadow-xl overflow-hidden" aria-hidden="true">
+        <div class="bg-teal text-white px-5 pt-6 pb-4">
+          <p class="text-sm">Terça-feira, 29 de setembro</p>
+          <p class="text-2xl font-bold">Bom dia, Helena</p>
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="rounded-xl border-2 border-ink p-3">
+            <p class="text-sm font-bold text-teal">Remédio · 08:00</p>
+            <p class="font-bold">Tomar o remédio da manhã</p>
+            <p class="mt-2 rounded-lg bg-teal text-white text-center font-bold py-2">Já tomei</p>
+          </div>
+          <div class="rounded-xl border-2 border-ink p-3">
+            <p class="text-sm font-bold text-teal">Consulta · 14:30</p>
+            <p class="font-bold">Clínica Vila Nova</p>
+          </div>
+          <div class="rounded-xl bg-sun p-3">
+            <p class="text-sm font-bold">Desafio do dia · 5 minutos</p>
+            <p class="font-bold">Encontre os pares</p>
+            <p class="mt-2 rounded-lg bg-ink text-white text-center font-bold py-2">Começar</p>
+          </div>
+          <p class="text-center font-bold text-sm pb-1">Você praticou 5 dias nesta semana</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA VS SOLUÇÃO -->
+<section id="solucao" class="max-w-6xl mx-auto px-5 py-16">
+  <h2 class="text-3xl sm:text-4xl font-bold max-w-3xl">Muitas tarefas espalhadas pedem mais atenção do que deveriam.</h2>
+  <p class="mt-4 text-xl text-soft max-w-3xl">Horários de remédios, consultas marcadas e o cuidado com a própria mente costumam ficar em papéis, agendas e aplicativos diferentes. Isso cansa e tira a tranquilidade de quem quer seguir independente.</p>
+  <div class="mt-10 grid md:grid-cols-2 gap-6">
+    <div class="rounded-2xl border-2 border-ink p-7">
+      <h3 class="text-2xl font-bold">No dia a dia, sem o app</h3>
+      <ul class="mt-4 space-y-3 text-lg list-disc pl-6 marker:text-ink">
+        <li>Lembretes soltos em bilhetes, calendário e celular.</li>
+        <li>Dúvida frequente: “já tomei o remédio hoje?”.</li>
+        <li>Atividades para a mente ficam para depois, sem regularidade.</li>
+        <li>Familiares precisam perguntar o tempo todo como está a rotina.</li>
+      </ul>
+    </div>
+    <div class="rounded-2xl bg-teal text-white p-7">
+      <h3 class="text-2xl font-bold">Com o Memória Ativa</h3>
+      <ul class="mt-4 space-y-3 text-lg list-disc pl-6 marker:text-sun">
+        <li>Remédios e consultas em uma única lista clara, com aviso na hora certa.</li>
+        <li>Um toque em “Já tomei” registra e tira a dúvida.</li>
+        <li>Um desafio curto por dia, que cabe na rotina.</li>
+        <li>Painel simples que mostra sua regularidade, e que você pode compartilhar se quiser.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section id="recursos" class="bg-mist">
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-3xl sm:text-4xl font-bold">Três pilares para cuidar da rotina e exercitar a mente</h2>
+    <div class="mt-10 grid lg:grid-cols-3 gap-6">
+      <article class="bg-white rounded-2xl border-l-[12px] border-teal p-7 shadow-sm">
+        <h3 class="text-2xl font-bold">Rotina organizada</h3>
+        <p class="mt-3 text-lg text-soft">Cadastre seus remédios e compromissos uma vez. O aplicativo avisa com tela em destaque e som, na hora combinada.</p>
+        <ul class="mt-4 space-y-2 text-lg list-disc pl-6">
+          <li>Alertas visuais e sonoros</li>
+          <li>Botão grande “Já tomei”</li>
+          <li>Lista do dia em ordem de horário</li>
+        </ul>
+      </article>
+      <article class="bg-white rounded-2xl border-l-[12px] border-sun p-7 shadow-sm">
+        <h3 class="text-2xl font-bold">Estímulo cognitivo</h3>
+        <p class="mt-3 text-lg text-soft">Desafios diários de poucos minutos para exercitar memória, atenção e raciocínio, com dificuldade que se ajusta ao seu ritmo.</p>
+        <ul class="mt-4 space-y-2 text-lg list-disc pl-6">
+          <li>Sessões de 3 a 7 minutos</li>
+          <li>Memória, atenção e raciocínio</li>
+          <li>Instruções claras, sem pressa</li>
+        </ul>
+      </article>
+      <article class="bg-white rounded-2xl border-l-[12px] border-ink p-7 shadow-sm">
+        <h3 class="text-2xl font-bold">Acompanhamento de hábitos</h3>
+        <p class="mt-3 text-lg text-soft">Um painel intuitivo mostra quantos dias você seguiu a rotina e praticou os desafios. O foco é a constância, não a comparação.</p>
+        <ul class="mt-4 space-y-2 text-lg list-disc pl-6">
+          <li>Frequência semanal e mensal</li>
+          <li>Evolução nos desafios</li>
+          <li>Resumo que você escolhe compartilhar</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARÊNCIA -->
+<section id="transparencia" class="max-w-6xl mx-auto px-5 py-16">
+  <div class="grid lg:grid-cols-2 gap-10">
+    <div>
+      <h2 class="text-3xl sm:text-4xl font-bold">Transparência e rigor acadêmico</h2>
+      <p class="mt-4 text-xl text-soft">O Memória Ativa é um projeto de pesquisa e desenvolvimento acadêmico. O protótipo está em teste e evolui com a participação e o retorno de quem usa.</p>
+      <p class="mt-4 text-xl text-soft">Seus dados de uso servem para mostrar a você mesmo a sua constância e para aprimorar o aplicativo. Você decide o que compartilhar com familiares ou cuidadores.</p>
+    </div>
+    <div class="rounded-2xl border-4 border-ink bg-sun p-7" role="note" aria-labelledby="aviso">
+      <h3 id="aviso" class="text-2xl font-bold">Aviso importante</h3>
+      <ul class="mt-4 space-y-3 text-lg list-disc pl-6">
+        <li>O aplicativo <strong>não faz diagnósticos</strong> e não identifica doenças.</li>
+        <li>Ele <strong>não emite laudos</strong> e não substitui consultas, exames ou o acompanhamento de médicos e outros profissionais de saúde.</li>
+        <li>Os desafios e o painel são ferramentas de organização e de prática regular, e não medem a sua saúde.</li>
+        <li>Converse sempre com seu médico sobre qualquer dúvida de saúde e sobre o uso dos seus medicamentos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ACESSIBILIDADE -->
+<section id="acessibilidade" class="bg-ink text-white">
+  <div class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-3xl sm:text-4xl font-bold max-w-3xl">Feito sob medida para ser fácil de ler e de usar</h2>
+    <p class="mt-4 text-xl max-w-3xl">Cada tela foi pensada com pessoas de 50 anos ou mais, seguindo as diretrizes internacionais de acessibilidade (WCAG).</p>
+    <dl class="mt-10 grid sm:grid-cols-2 gap-6">
+      <div class="rounded-2xl bg-white text-ink p-6"><dt class="text-2xl font-bold">Letras grandes</dt><dd class="mt-2 text-lg text-soft">Texto a partir de 18 px, com opção de aumentar ainda mais.</dd></div>
+      <div class="rounded-2xl bg-white text-ink p-6"><dt class="text-2xl font-bold">Alto contraste</dt><dd class="mt-2 text-lg text-soft">Cores escolhidas para leitura confortável, mesmo sob luz forte.</dd></div>
+      <div class="rounded-2xl bg-white text-ink p-6"><dt class="text-2xl font-bold">Comandos simples</dt><dd class="mt-2 text-lg text-soft">Botões grandes, com texto escrito em todos os ícones e uma ação principal por tela.</dd></div>
+      <div class="rounded-2xl bg-white text-ink p-6"><dt class="text-2xl font-bold">Sem poluição visual</dt><dd class="mt-2 text-lg text-soft">Sem propagandas, sem janelas inesperadas e sem cronômetros que apressam você.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="final" class="max-w-4xl mx-auto px-5 py-16 text-center">
+  <h2 class="text-3xl sm:text-4xl font-bold">Participe do teste do protótipo</h2>
+  <p class="mt-4 text-xl text-soft">Experimente o Memória Ativa e conte o que achou. Sua opinião ajuda a construir um aplicativo melhor para todos.</p>
+  <div class="mt-8 flex flex-wrap justify-center gap-4">
+    <a href="#" class="btn bg-teal text-white hover:bg-teal-dark">Testar o protótipo</a>
+    <a href="#" class="btn bg-white text-ink border-2 border-ink hover:bg-sun">Falar com a equipe</a>
+  </div>
+</section>
+</main>
+
+<footer class="bg-mist border-t-2 border-ink">
+  <div class="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-8 text-lg">
+    <div>
+      <p class="text-2xl font-bold">Memória Ativa</p>
+      <p class="mt-2 text-soft">Projeto acadêmico desenvolvido por estudantes, com orientação docente, nas áreas de design, tecnologia e saúde do envelhecimento.</p>
+      <p class="mt-2 text-soft">Equipe: inclua aqui os nomes dos integrantes, do orientador e da instituição.</p>
+    </div>
+    <nav aria-label="Links institucionais">
+      <ul class="space-y-2 font-bold underline underline-offset-4">
+        <li><a class="inline-block py-1" href="#">Sobre a instituição</a></li>
+        <li><a class="inline-block py-1" href="#">Sobre a pesquisa</a></li>
+        <li><a class="inline-block py-1" href="#">Termos de uso e privacidade</a></li>
+        <li><a class="inline-block py-1" href="#">Contato da equipe</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="max-w-6xl mx-auto px-5 pb-10 text-soft">Este aplicativo não substitui acompanhamento médico e não emite diagnósticos ou laudos.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
