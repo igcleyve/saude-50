@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meus remédios — Memória Ativa (protótipo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { sans: ['"Atkinson Hyperlegible"', 'Verdana', 'Arial', 'sans-serif'] },
+    colors: { ink: '#0F2A43', soft: '#2B4257', teal: { DEFAULT: '#005A5B', dark: '#003F40' }, mist: '#E6EFF5', sun: '#FFCB47' }
+  } }
+}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans leading-relaxed antialiased">
+<a href="#conteudo" class="absolute -top-24 left-2 z-50 bg-sun text-ink font-bold px-4 py-3 rounded focus:top-2">Pular para o conteúdo</a>
+
+<header class="border-b-2 border-ink">
+  <div class="max-w-4xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
+    <a href="index.html" class="text-2xl font-bold text-ink">Memória Ativa</a>
+    <div class="flex flex-wrap items-center gap-4 font-bold">
+      <a href="index.html" class="underline underline-offset-4 py-2">Voltar ao site</a>
+      <span class="flex items-center gap-2" role="group" aria-label="Tamanho da letra">
+        <button id="menos" type="button" class="btn !min-h-[48px] !px-4 bg-mist text-ink border-2 border-ink" aria-label="Diminuir tamanho da letra">A −</button>
+        <button id="mais" type="button" class="btn !min-h-[48px] !px-4 bg-mist text-ink border-2 border-ink" aria-label="Aumentar tamanho da letra">A +</button>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo" class="max-w-4xl mx-auto px-5 py-10 space-y-12">
+  <div role="note" class="rounded-2xl border-4 border-ink bg-sun p-5 text-lg">
+    <strong>Protótipo em teste.</strong> Este aplicativo é um apoio de organização. Ele não sugere doses nem horários e não substitui a orientação do seu médico. Não dependa apenas dele para lembrar de medicamentos importantes.
+  </div>
+
+  <!-- ALERTA DE HORÁRIO -->
+  <div id="alerta" role="alert" class="hidden rounded-2xl bg-ink text-white p-6">
+    <p id="alerta-texto" class="text-2xl font-bold"></p>
+    <div class="mt-4 flex flex-wrap gap-4">
+      <button id="alerta-tomei" type="button" class="btn bg-sun text-ink">Já tomei</button>
+      <button id="alerta-fechar" type="button" class="btn bg-white text-ink">Fechar aviso</button>
+    </div>
+  </div>
+
+  <!-- HOJE -->
+  <section aria-labelledby="t-hoje">
+    <h1 id="t-hoje" class="text-3xl sm:text-4xl font-bold">Meus remédios de hoje</h1>
+    <p id="data-hoje" class="mt-2 text-xl text-soft"></p>
+    <p id="resumo-hoje" class="mt-2 text-xl font-bold" aria-live="polite"></p>
+    <ul id="lista-hoje" class="mt-6 space-y-4"></ul>
+    <div class="mt-6">
+      <button id="ativar-avisos" type="button" class="btn bg-white text-ink border-2 border-ink hover:bg-sun">Ativar avisos do navegador</button>
+      <p id="avisos-status" class="mt-2 text-lg text-soft" role="status">Os avisos na tela e o som funcionam com esta página aberta.</p>
+    </div>
+  </section>
+
+  <!-- CADASTRO -->
+  <section aria-labelledby="t-novo" class="rounded-2xl border-2 border-ink bg-mist p-6 sm:p-8">
+    <h2 id="t-novo" class="text-3xl font-bold">Cadastrar um remédio</h2>
+    <p class="mt-2 text-lg text-soft">Preencha como está na sua receita. Para dois horários no dia, cadastre duas vezes.</p>
+    <form id="form-med" novalidate class="mt-6 space-y-6">
+      <div>
+        <label for="nome" class="block text-xl font-bold">Nome do remédio</label>
+        <input id="nome" type="text" autocomplete="off" aria-describedby="erro-nome" class="mt-2 w-full min-h-[56px] rounded-lg border-2 border-ink bg-white px-4 text-lg">
+        <p id="erro-nome" class="erro"></p>
+      </div>
+      <div>
+        <label for="dose" class="block text-xl font-bold">Quantidade, como na receita</label>
+        <input id="dose" type="text" placeholder="Exemplo: 1 comprimido" autocomplete="off" aria-describedby="erro-dose" class="mt-2 w-full min-h-[56px] rounded-lg border-2 border-ink bg-white px-4 text-lg">
+        <p id="erro-dose" class="erro"></p>
+      </div>
+      <div>
+        <label for="hora" class="block text-xl font-bold">Horário</label>
+        <input id="hora" type="time" aria-describedby="erro-hora" class="mt-2 w-full min-h-[56px] rounded-lg border-2 border-ink bg-white px-4 text-lg">
+        <p id="erro-hora" class="erro"></p>
+      </div>
+      <button type="submit" class="btn w-full bg-teal text-white hover:bg-teal-dark">Salvar remédio</button>
+      <p id="form-status" class="text-xl font-bold" role="status" aria-live="polite"></p>
+    </form>
+
+    <h3 class="mt-10 text-2xl font-bold">Remédios cadastrados</h3>
+    <ul id="lista-cadastro" class="mt-4 space-y-3"></ul>
+  </section>
+
+  <!-- SEMANA -->
+  <section aria-labelledby="t-semana">
+    <h2 id="t-semana" class="text-3xl font-bold">Sua semana</h2>
+    <p class="mt-2 text-lg text-soft">Mostra quantas doses você registrou como tomadas em cada dia, considerando os remédios cadastrados hoje. O objetivo é acompanhar a sua regularidade.</p>
+    <ul id="lista-semana" class="mt-6 space-y-4"></ul>
+  </section>
+
+  <!-- PRIVACIDADE -->
+  <section aria-labelledby="t-priv" class="border-t-2 border-ink pt-8">
+    <h2 id="t-priv" class="text-2xl font-bold">Seus dados</h2>
+    <p class="mt-2 text-lg text-soft">Tudo fica salvo apenas neste navegador, neste aparelho. Nada é enviado para a internet.</p>
+    <button id="apagar" type="button" class="btn mt-4 bg-white text-ink border-2 border-ink hover:bg-sun">Apagar todos os meus dados</button>
+  </section>
+</main>
+
+<footer class="bg-mist border-t-2 border-ink">
+  <p class="max-w-4xl mx-auto px-5 py-8 text-lg text-soft">Memória Ativa é um projeto acadêmico. Este aplicativo não faz diagnósticos, não emite laudos e não substitui acompanhamento médico.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
