@@ -8,3 +8,15 @@ body { background:#fff; color:#0F2A43; }
 
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+
+
+/* Desafio: encontre os pares */
+.carta { min-height: 96px; border: 2px solid #0F2A43; border-radius: .75rem; background: #fff; color: #0F2A43; font-size: 1.5rem; font-weight: 700; }
+.carta:hover { background: #FFCB47; }
+.carta.aberta { background: #FFCB47; }
+.carta.par { background: #005A5B; color: #fff; }
+
+/* Mensagens de erro do formulário */
+.erro { margin-top: .5rem; font-size: 1.125rem; font-weight: 700; color: #8A1C1C; }
+.erro:empty { display: none; }
+input[aria-invalid="true"], select[aria-invalid="true"] { border-color: #8A1C1C; border-width: 4px; }

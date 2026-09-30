@@ -28,6 +28,7 @@ tailwind.config = {
     <nav aria-label="Navegação principal" class="flex flex-wrap items-center gap-x-6 gap-y-2 font-bold">
       <a class="underline underline-offset-4 py-2" href="#solucao">Por que usar</a>
       <a class="underline underline-offset-4 py-2" href="#recursos">O que oferece</a>
+      <a class="underline underline-offset-4 py-2" href="#desafio">Experimente</a>
       <a class="underline underline-offset-4 py-2" href="#transparencia">Transparência</a>
       <a class="underline underline-offset-4 py-2" href="#acessibilidade">Acessibilidade</a>
       <span class="flex items-center gap-2" role="group" aria-label="Tamanho da letra">
@@ -39,7 +40,7 @@ tailwind.config = {
 </header>
 
 <main id="conteudo">
-<!-- HERO -->
+
 <section id="topo" class="bg-mist">
   <div class="max-w-6xl mx-auto px-5 py-14 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
     <div>
@@ -53,7 +54,7 @@ tailwind.config = {
       <p class="mt-5 text-lg text-soft">Gratuito durante a fase de pesquisa. Sem necessidade de cartão.</p>
     </div>
 
-    <!-- Mockup do celular (construído em HTML/CSS) -->
+    
     <div class="flex justify-center" role="img" aria-label="Ilustração da tela inicial do aplicativo em um celular, mostrando o remédio da manhã, uma consulta às 14h30 e o desafio do dia.">
       <div class="w-[290px] rounded-[2.5rem] border-[10px] border-ink bg-white shadow-xl overflow-hidden" aria-hidden="true">
         <div class="bg-teal text-white px-5 pt-6 pb-4">
@@ -82,7 +83,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- PROBLEMA VS SOLUÇÃO -->
+
 <section id="solucao" class="max-w-6xl mx-auto px-5 py-16">
   <h2 class="text-3xl sm:text-4xl font-bold max-w-3xl">Muitas tarefas espalhadas pedem mais atenção do que deveriam.</h2>
   <p class="mt-4 text-xl text-soft max-w-3xl">Horários de remédios, consultas marcadas e o cuidado com a própria mente costumam ficar em papéis, agendas e aplicativos diferentes. Isso cansa e tira a tranquilidade de quem quer seguir independente.</p>
@@ -108,7 +109,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- PILARES -->
+
 <section id="recursos" class="bg-mist">
   <div class="max-w-6xl mx-auto px-5 py-16">
     <h2 class="text-3xl sm:text-4xl font-bold">Três pilares para cuidar da rotina e exercitar a mente</h2>
@@ -144,7 +145,20 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- TRANSPARÊNCIA -->
+
+<section id="desafio" class="max-w-6xl mx-auto px-5 py-16">
+  <h2 class="text-3xl sm:text-4xl font-bold">Experimente um desafio agora</h2>
+  <p class="mt-4 text-xl text-soft max-w-3xl">Este é um exemplo dos exercícios do aplicativo: encontre os pares de palavras iguais. Não há tempo limite e você pode jogar quantas vezes quiser.</p>
+  <div class="mt-8 rounded-2xl border-2 border-ink p-6">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <p id="pares-status" class="text-xl font-bold" role="status" aria-live="polite"></p>
+      <button id="pares-reiniciar" type="button" class="btn bg-white text-ink border-2 border-ink hover:bg-sun">Jogar de novo</button>
+    </div>
+    <div id="pares-grade" class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4"></div>
+  </div>
+</section>
+
+
 <section id="transparencia" class="max-w-6xl mx-auto px-5 py-16">
   <div class="grid lg:grid-cols-2 gap-10">
     <div>
@@ -164,7 +178,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ACESSIBILIDADE -->
+
 <section id="acessibilidade" class="bg-ink text-white">
   <div class="max-w-6xl mx-auto px-5 py-16">
     <h2 class="text-3xl sm:text-4xl font-bold max-w-3xl">Feito sob medida para ser fácil de ler e de usar</h2>
@@ -178,14 +192,40 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- CTA FINAL -->
+
 <section id="final" class="max-w-4xl mx-auto px-5 py-16 text-center">
   <h2 class="text-3xl sm:text-4xl font-bold">Participe do teste do protótipo</h2>
   <p class="mt-4 text-xl text-soft">Experimente o Memória Ativa e conte o que achou. Sua opinião ajuda a construir um aplicativo melhor para todos.</p>
-  <div class="mt-8 flex flex-wrap justify-center gap-4">
-    <a href="#" class="btn bg-teal text-white hover:bg-teal-dark">Testar o protótipo</a>
-    <a href="#" class="btn bg-white text-ink border-2 border-ink hover:bg-sun">Falar com a equipe</a>
-  </div>
+  <form id="form-teste" novalidate class="mt-8 rounded-2xl border-2 border-ink bg-mist p-6 sm:p-8 text-left space-y-6">
+    <div>
+      <label for="nome" class="block text-xl font-bold">Seu nome</label>
+      <input id="nome" name="nome" type="text" autocomplete="name" required aria-describedby="erro-nome" class="mt-2 w-full min-h-[56px] rounded-lg border-2 border-ink bg-white px-4 text-lg">
+      <p id="erro-nome" class="erro"></p>
+    </div>
+    <div>
+      <label for="email" class="block text-xl font-bold">Seu e-mail</label>
+      <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="erro-email" class="mt-2 w-full min-h-[56px] rounded-lg border-2 border-ink bg-white px-4 text-lg">
+      <p id="erro-email" class="erro"></p>
+    </div>
+    <div>
+      <label for="perfil" class="block text-xl font-bold">Você é</label>
+      <select id="perfil" name="perfil" required aria-describedby="erro-perfil" class="mt-2 w-full min-h-[56px] rounded-lg border-2 border-ink bg-white px-4 text-lg">
+        <option value="">Escolha uma opção</option>
+        <option value="usuario">Uma pessoa com 50 anos ou mais</option>
+        <option value="familiar">Familiar ou cuidador</option>
+      </select>
+      <p id="erro-perfil" class="erro"></p>
+    </div>
+    <div>
+      <label class="flex items-start gap-4 text-lg cursor-pointer">
+        <input id="aceite" name="aceite" type="checkbox" aria-describedby="erro-aceite" class="mt-1 h-7 w-7 shrink-0 accent-teal">
+        <span>Entendo que o Memória Ativa é um projeto acadêmico em teste e que não substitui acompanhamento médico.</span>
+      </label>
+      <p id="erro-aceite" class="erro"></p>
+    </div>
+    <button type="submit" class="btn w-full bg-teal text-white hover:bg-teal-dark">Quero testar o protótipo</button>
+    <p id="form-status" class="text-xl font-bold" role="status" aria-live="polite"></p>
+  </form>
 </section>
 </main>
 
